@@ -57,7 +57,7 @@
 
 <p>The models chosen for the realization are 3. The first is a <strong>Wooden Cabinet</strong> (1953) with protruding strips decorative and functional. The second is an <strong>Armchair</strong> designed in 1953 and built with frame in satin brass and leather two-tone white / blue. The third is one of the most important industrial design products of the twentieth century: the <strong>"Superleggera" (Superlight) chair</strong> (1957).</p>
 
-<hr><h4>
+<h4>
 <a name="wooden-cabinet" class="anchor" href="#wooden-cabinet"><span class="octicon octicon-link"></span></a>Wooden Cabinet</h4>
 
 <p>Wooden cabinet with protruding strips (1953) decorative and functional: they served to open doors or drawers. It is part of a series, made ​​with different finishes, including dresser drawers, desks and furniture-bookcase.</p>
@@ -67,18 +67,18 @@
 <p>For the realization, the model was divided into 3 sections:</p>
 
 <ol>
-<li>Outside</li>
-<li>Drawers</li>
-<li>Feet</li>
+<li>Outside;</li>
+<li>Drawers;</li>
+<li>Feet.</li>
 </ol><p>The outside has been created using 5 CUBOIDs 2-dimensional for the outer part. The inner part, instead, has been created using some BEZIER surfaces, joined then with the outer part always through BEZIER.  </p>
 
 <p><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/commode-outside.png" alt="commode outside"></p>
 
-<p>The drawers has been realized like the outside (with CUBOIDs and BEZIER). For the many strips that appear on the drawers was used the SIMPLICIAL_COMPLEX for each of them. The completed drawers will be then inserted inside the outside.</p>
+<p>The drawers have been realized like the outside (with CUBOIDs and BEZIER). For the many strips that appear on the drawers was used the SIMPLICIAL_COMPLEX for each of them. The completed drawers will be then inserted inside the outside.</p>
 
 <p><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/commode-drawers.png" alt="commode drawers"></p>
 
-<p>Finally the feet has been built with a CUBOID as the base, 4 inclined trapezes of different dimension created with SIMPLICIAL_COMPLEX and a cylinder on top. </p>
+<p>Finally the feet have been built with a CUBOID as the base, 4 inclined trapezes of different dimension created with SIMPLICIAL_COMPLEX and a cylinder on top. </p>
 
 <p><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/commode-foot.png" alt="commode-foot"></p>
 
@@ -92,15 +92,49 @@
 
 <p><a href="https://raw.github.com/cvdlab-cg/416886/master/final-project/python/commode.py"><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/commode_py.png" alt="commode py"></a></p>
 
+<hr><h4>
+<a name="armchair" class="anchor" href="#armchair"><span class="octicon octicon-link"></span></a>Armchair</h4>
+
+<p>Armchair designed in 1953 and built with frame in satin brass and leather two-tone white / blue. It takes part of the collection, made under the artistic direction of Studio Cerri &amp; Associati, includes furniture and accessories designed by Gio Ponti between 1935 and the 50s.</p>
+
+<p><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/poltrona-gio-ponti.jpg" alt="armchair"></p>
+
+<p>The model has been divided into 3 sections:</p>
+
+<ul>
+<li>pillows;</li>
+<li>legs;</li>
+<li>armchairs.</li>
+</ul><p>The pillows have been developed entirely with BEZIER. For each pillow, first the 6 surfaces that characterize the pillow have been realized. But being all curved surfaces, they present 4 holes per pillow between them. So these 4 holes have been closed with 4 BEZIER surface in order to soften the attachment  between the 6 surfaces.</p>
+
 <p><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/armchair-pillows.png" alt="armchair pillows"></p>
+
+<p>For the armchair's legs, some constructs have been used. The straight sections of the pipes of the legs have been built with cylinders defined with BEZIER. These cylinders are simple BEZIER surfaces which are given as a parameter some circumferences defined in this way.</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">circumference</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">r</span><span class="p">,</span><span class="nx">dx</span><span class="p">,</span><span class="nx">dy</span><span class="p">,</span><span class="nx">dz</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nx">r</span><span class="o">*</span><span class="nx">COS</span><span class="p">(</span><span class="nx">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="nx">dx</span><span class="p">,</span> <span class="nx">r</span><span class="o">*</span><span class="nx">SIN</span><span class="p">(</span><span class="nx">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="nx">dy</span><span class="p">,</span> <span class="nx">dz</span><span class="p">];</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+
+<p>Instead the curved sections of the pipes have been built with a specific section of the torus. The attachments of the legs with the pillow have been realized with simple CUBOIDS and the bases always with the cylinder defined before.</p>
 
 <p><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/armchair-legs.png" alt="armchair legs"></p>
 
+<p>Finally the armrest has been built with a CUBOID in the center and 4 BEZIER surfaces, one on each side of the CUBOID.</p>
+
 <p><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/armchair-armrest.png" alt="armchair armrest"></p>
+
+<p>The final model developed with Plasm.js is this:</p>
 
 <p><a href="https://raw.github.com/cvdlab-cg/416886/master/final-project/javascript/armchair.js"><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/armchair1.png" alt="armchair1"></a></p>
 
 <p><a href="https://raw.github.com/cvdlab-cg/416886/master/final-project/javascript/armchair.js"><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/armchair2.png" alt="armchair2"></a></p>
+
+<p>Here instead the prototype developed with PyPlasm module:</p>
+
+<p><a href="https://raw.github.com/cvdlab-cg/416886/master/final-project/python/armchair.py"><img src="https://raw.github.com/cvdlab-cg/416886/master/final-project/img/armchair-py.png" alt="armchair py"></a></p>
       </section>
     </div>
 
